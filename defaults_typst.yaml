@@ -1,0 +1,27 @@
+from: markdown+citations+raw_tex+fenced_divs+bracketed_spans+link_attributes+implicit_figures+definition_lists-auto_identifiers+multiline_tables
+to: typst
+
+standalone: true
+
+# top-level-division: chapter
+# number-sections: true
+# cite-method: biblatex
+# highlight-style: pygments
+
+# paths are relative to dodo.py
+#template: ./src/template.typst
+metadata-file: ./metadata.yaml
+
+filters: []
+# - tools/abbreviations.lua
+# - tools/panflutist/capital_spans.py
+# - tools/panflutist/code_divs.py
+# - tools/panflutist/figure_divs.py
+# - tools/panflutist/table_divs.py
+# - tools/panflutist/reference_spans.py
+# - tools/panflutist/textquote.py
+# - tools/panflutist/glossary_spans.py
+# - tools/panflutist/unnumbered_sections.py
+
+eol: lf
+# pdf-engine: lualatex

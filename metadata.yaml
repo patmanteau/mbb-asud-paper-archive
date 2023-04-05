@@ -1,0 +1,18 @@
+title: 'MBB Köln 2022, Analyse semi- und unstrukturierter Daten SoSe 2023'
+# subtitle: 
+author: 'Patrick Haas'
+# institute: 
+# abstract: 
+# keywords: 
+lang: de-DE
+
+bibliography: mbb-asud-paper.bib
+mainfont: 'STIX Two Text'
+#mainfont: 'Skolar PE TEST'
+
+#mainfont: fbb
+#mathfont: texgyrepagella-math.otf
+csquotes: true
+graphics: true
+link-citations: true
+use-chapter: true

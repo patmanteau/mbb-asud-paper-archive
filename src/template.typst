@@ -1,0 +1,8 @@
+#let paper(doc) = [
+    #doc
+
+    #bibliography("mbb-asud-paper.bib")
+]
+
+
+

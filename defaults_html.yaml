@@ -1,0 +1,31 @@
+from: markdown+citations+raw_tex+fenced_divs+bracketed_spans+link_attributes+implicit_figures+definition_lists+header_attributes+implicit_header_references-auto_identifiers
+to: html
+
+standalone: true
+toc: true
+toc-depth: 3
+number-sections: true
+cite-method: citeproc
+highlight-style: pygments
+
+html-math-method:
+  method: mathjax
+
+# paths are relative to dodo.py
+template: source/templates/pandoc-uikit/standalone.html
+metadata-file: ./metadata.yaml
+bibliography: source/latex/library.bib
+
+filters:
+# - pandoc-citeproc
+# '- tools/abbreviations.lua
+# - tools/panflutist/capital_spans.py
+- tools/panflutist/code_divs.py
+# - tools/panflutist/figure_divs.py
+# - tools/panflutist/table_divs.py
+# - tools/panflutist/reference_spans.py
+# - tools/panflutist/textquote.py
+# - tools/panflutist/glossary_spans.py
+# - tools/panflutist/unnumbered_sections.py
+
+eol: lf

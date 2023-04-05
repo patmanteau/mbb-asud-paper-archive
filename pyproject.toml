@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "mbb-asud-paper"
+version = "1.0.0"
+description = "M.Sc. Big Data & Business Analytics, FOM Köln, SoSe 2023"
+license = "Proprietary"
+authors = [
+    "Patrick Haas <patmanteau@posteo.de>"
+]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flake8 = "^6.0.0"
+black = "^23.3.0"
+pyyaml = "^6.0"
+
+
+[tool.isort]
+profile = "black"
+src_paths = ["src"]
