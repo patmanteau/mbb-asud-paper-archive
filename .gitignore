@@ -1,6 +1,9 @@
 ## Quarto build
 src/mbb-asud-paper_files/
 
+## Jupyter
+.ipynb_checkpoints/
+
 ## Build system:
 build/
 .doit.*
