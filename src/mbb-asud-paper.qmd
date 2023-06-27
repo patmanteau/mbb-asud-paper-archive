@@ -1,0 +1,84 @@
+## Tagebuch
+
+### 2023-06-25
+
+Motivierende Idee:
+- Einen Graph aus Personen/Orten bauen, die in Tagesschau-Artikeln gemeinsam erwähnt wurden
+- Eventuell nach Entfernung der Erwähnung gewichten
+- Lustige Netzwerkanalysen im Graph durchführen
+- Visualisieren!
+
+#### Erster Ansatz
+
+spaCy anwerfen und NER betreiben!
+
+```{python}
+import spacy
+import random
+from spacy import util
+from spacy.tokens import Doc
+from spacy.training import Example
+from spacy.language import Language
+
+from unidecode import unidecode
+import json
+
+```
+
+```{python}
+nlp = spacy.load("de_core_news_lg")
+nlp.add_pipe("entityfishing", config={"language": "de"})
+
+
+```
+
+```{python}
+def extract_persons(ents):
+    persons = {}
+    for ent in ents:
+        if ent.label_ in ["PER"]:
+            if ent._.kb_qid:
+                persons[ent._.kb_qid] = (
+                    ent.text,
+                    ent.label_,
+                    ent._.kb_qid,
+                    ent._.url_wikidata,
+                )
+            # person = unidecode(ent.text.split(" ")[-1])
+            # if person[0].isupper():
+            #     persons.add(person)
+    return persons
+
+
+```
+
+```{python}
+doc = nlp(texts[1])
+print(json.dumps(extract_persons(doc.ents), indent=4))
+```
+
+Problem: Ziemlich viele Erdogans...wir brauchen ein Verfahren, um
+unterschiedlichen Schreibweisen dieselbe Entität zuzuordnen.
+
+- **Entity Linking**
+  - spaCy hat sowas, aber man braucht: 
+    - eine Knowledge Base
+    - eine Funktion, die plausible Kandidaten aus der KB zieht,
+    - ein ML-Modell, das anhand des lokalen Kontexts den wahrscheinlichsten
+      Kandidaten auswählt
+    - Bisschen viel
+  - Recherche:
+    - [amazon-science/ReFinED: ReFinED is an efficient and accurate entity linking (EL) system.](https://github.com/amazon-science/ReFinED)
+    - [Improving Named Entity Disambiguation using Entity Relatedness within Wikipedia | by Will Seaton | Towards Data Science](https://towardsdatascience.com/improving-named-entity-disambiguation-using-entity-relatedness-within-wikipedia-92f400ee5994)
+    - [Introducing the Kensho Derived Wikimedia Dataset | by Gabriel Altay | Kensho Blog](https://blog.kensho.com/announcing-the-kensho-derived-wikimedia-dataset-5d1197d72bcf)
+    - [Kensho Derived Wikimedia Dataset | Kaggle](https://www.kaggle.com/datasets/kenshoresearch/kensho-derived-wikimedia-data?select=property_aliases.csv)
+    - [kdwd_wikidata_introduction | Kaggle](https://www.kaggle.com/code/kenshoresearch/kdwd-wikidata-introduction)
+- **Naiver Ansatz**
+  - Nur das letzte Wort der Entität
+
+## Scraping
+
+**Quelle**: https://www.tagesschau.de/archiv?datum=YYYY-MM-DD -> z.B.: https://www.tagesschau.de/archiv?datum=2023-06-22
+
+div.teasergroup:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > a:nth-child(1)
+html body div.global-wrapper main.content-wrapper.content-wrapper--show-cuts div.layout-container div#content.layout-content.scrolled div.container div.columns.twelve.teasergroup div.columns.twelve div.columns.twelve.m-ten.m-offset-one.l-eight.l-offset-two div.copytext-element-wrapper__vertical-only div.teaser-right.twelve a.teaser-right__link
