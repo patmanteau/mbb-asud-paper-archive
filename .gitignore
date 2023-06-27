@@ -1,3 +1,6 @@
+## Quarto build
+src/mbb-asud-paper_files/
+
 ## Build system:
 build/
 .doit.*
