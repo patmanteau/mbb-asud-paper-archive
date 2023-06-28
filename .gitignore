@@ -6,6 +6,7 @@ src/mbb-asud-paper_files/
 
 ## Build system:
 build/
+out/
 .doit.*
 __pycache__/
 .vscode/
