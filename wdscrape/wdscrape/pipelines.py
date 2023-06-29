@@ -11,11 +11,11 @@ import jsonlines as jl
 
 class WdscrapePipeline:
     def open_spider(self, spider):
-        self.jl_file = jl.open("../out/wd-items.jsonl", "a")
+        self.jl_file = jl.open("../data/4_wd-catalog.jsonl", "a")
 
     def close_spider(self, spider):
         self.jl_file.close()
 
     def process_item(self, item, spider):
-        self.jl_file.write({item["id"]: {"wikidata": item}})
+        self.jl_file.write(item)
         return item

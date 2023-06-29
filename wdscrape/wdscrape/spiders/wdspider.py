@@ -11,13 +11,12 @@ class WdspiderSpider(scrapy.Spider):
     def start_requests(self):
         existing = []
 
-        with jl.open("../out/wd-items.jsonl", "r") as wd_items:
+        with jl.open("../data/4_wd-catalog.jsonl", "r") as wd_items:
             existing = [
-                list(item.keys())[0]
-                for item in wd_items.iter(type=dict, skip_invalid=True)
+                item["id"] for item in wd_items.iter(type=dict, skip_invalid=True)
             ]
 
-        with jl.open("../out/catalog.jsonl", "r") as req_items:
+        with jl.open("../data/3_catalog.jsonl", "r") as req_items:
             for item in req_items:
                 if item["id"] not in existing:
                     yield scrapy.Request(
