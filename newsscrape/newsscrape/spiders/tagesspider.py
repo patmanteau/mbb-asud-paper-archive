@@ -16,9 +16,9 @@ class TagesspiderSpider(CrawlSpider):
 
     def start_requests(self):
         base = datetime.datetime.today()
-        numdays = 365
+        td = base - datetime.datetime.strptime("01-01-2015", "%d-%m-%Y")
         date_list = reversed(
-            [base - datetime.timedelta(days=x + 1) for x in range(numdays)]
+            [base - datetime.timedelta(days=x) for x in range(td.days)]
         )
         for date in date_list:
             yield scrapy.Request(
