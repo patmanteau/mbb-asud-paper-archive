@@ -10,12 +10,5 @@ import jsonlines as jl
 
 
 class WdscrapePipeline:
-    def open_spider(self, spider):
-        self.jl_file = jl.open("../data/4_wd-catalog.jsonl", "a")
-
-    def close_spider(self, spider):
-        self.jl_file.close()
-
     def process_item(self, item, spider):
-        self.jl_file.write(item)
         return item
