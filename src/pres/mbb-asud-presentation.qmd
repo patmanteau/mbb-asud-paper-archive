@@ -12,6 +12,22 @@ author:
     email: p@trickhaas.de
 ---
 
+## Inspiration
+:::: {.columns}
+
+::: {.column width="40%"}
+Left column
+:::
+
+::: {.column width="60%"}
+![](15.jpg)
+
+Quelle: [sonar-idh/visualization-prototypes](https://github.com/sonar-idh/visualization-prototypes)
+
+:::
+
+::::
+
 ## Wikifizierung {.smaller}
 
 ```{python}
@@ -23,14 +39,14 @@ _bd = (Path(".") / "..").resolve()
 
 # Data directory
 _dd = _bd / "data"
-df_catalog = pd.read_json(
-    open(f"{_dd}/3_catalog.jsonl", "r", encoding="utf8"), lines=True
-)
-df_wd_catalog = pd.read_json(
-    open(f"{_dd}/4_wd-catalog.jsonl", "r", encoding="utf8"), lines=True
-)
-df_all = pd.merge(df_catalog, df_wd_catalog, on="id")
-df_all[["id", "label", "description"]].sample(4).style.hide()
+# df_catalog = pd.read_json(
+#     open(f"{_dd}/3_catalog.jsonl", "r", encoding="utf8"), lines=True
+# )
+# df_wd_catalog = pd.read_json(
+#     open(f"{_dd}/4_wd-catalog.jsonl", "r", encoding="utf8"), lines=True
+# )
+# df_all = pd.merge(df_catalog, df_wd_catalog, on="id")
+# df_all[["id", "label", "description"]].sample(4).style.hide()
 ```
 
 ## Example slide
