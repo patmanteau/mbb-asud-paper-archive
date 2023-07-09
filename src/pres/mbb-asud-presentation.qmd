@@ -12,21 +12,165 @@ author:
     email: p@trickhaas.de
 ---
 
-## Inspiration
-:::: {.columns}
 
-::: {.column width="40%"}
-Left column
+
+## {background-image="assets/typen_von_graphen.png" background-size="100%"}
+
+[Quellen s. letzte Seite]{.small .absolute right=10}
+
+
+::: {.notes}
+- Welt Netzwerke
+- Strukturen, Zusammenhänge, Flüsse
+- Kaum Visualisierungsproblem herausfordend Graph
+- Thesis
 :::
 
-::: {.column width="60%"}
-![](15.jpg)
+---------------
 
-Quelle: [sonar-idh/visualization-prototypes](https://github.com/sonar-idh/visualization-prototypes)
+:::: {.columns}
 
+::: {.column width="50%"}
+![](assets/sonar_einstieg.png){height=50%}
+
+*SoNAR (IDH)*: Interfaces to Data for Social Historical Network Analysis and Research
+:::
+
+::: {.column width="50%"}
+![](assets/15.jpg)
 :::
 
 ::::
+
+::: {.notes}
+- Gespräch Vorlesung
+- Ich: warum kein Graph?
+- SoNAR (IDH): Historische Netzwerkanalyse
+:::
+
+# Vom Nachrichtenportal zum Netzwerk
+
+##
+
+::: {layout-ncol=3 layout-valign="center" .centered}
+![](assets/tagesschau.de-archiv.png)
+
+[→ ? →]{.fragment .r-fit-text fragment-index=2}
+
+![](assets/newsgraph.svg){.fragment fragment-index=1}
+:::
+
+::: {.notes}
+- Idee: Netzwerk aus Nachrichtenartikeln bauen
+- Personen, Orte, Organisationen verbinden
+- die gemeinsam in einem Artikel erwähnt werden
+- mit den Mitteln der Netzwerkanalyse auswerten (Kennzahlen, Eigenschaften, Communities)
+:::
+
+
+## {auto-animate="true"}
+
+:::: {layout-ncol=2 layout-valign="center"}
+
+::: {}
+»[...] Die Verurteilung von [Starkoch Alfons Schuhbeck]{.bg style="--col: #FFAABB" data-id="schuhbeck1"} wegen [Steuerhinterziehung]{.bg style="--col: #BBCC33"} ist nach einem [Urteil]{.bg style="--col: #AAAA00"} des [Bundesgerichtshofs]{.bg style="--col: #44BB99"} weitgehend rechtskräftig. Im Oktober 2022 hatte das [Landgericht München I]{.bg style="--col: #77AADD"} [Schuhbeck]{.bg style="--col: #99DDFF" data-id="schuhbeck2"} zu drei Jahren und zwei Monaten [Gefängnis]{.bg style="--col: #EEDD88"} verurteilt [...].«
+:::
+
+::: {.fragment .centered}
+**Named Entity Recognition**
+:::
+::::
+
+::: {.notes}
+
+:::
+
+## {auto-animate="true"}
+
+:::: {layout-ncol=2 layout-valign="center"}
+
+::: {}
+»[...] Die Verurteilung von [Starkoch Alfons Schuhbeck]{.bg style="--col: #EE8866" data-id="schuhbeck1"} wegen [Steuerhinterziehung]{.bg style="--col: #BBCC33"} ist nach einem [Urteil]{.bg style="--col: #AAAA00"} des [Bundesgerichtshofs]{.bg style="--col: #44BB99"} weitgehend rechtskräftig. Im Oktober 2022 hatte das [Landgericht München I]{.bg style="--col: #77AADD"} [Schuhbeck]{.bg style="--col: #EE8866" data-id="schuhbeck2"} zu drei Jahren und zwei Monaten [Gefängnis]{.bg style="--col: #EEDD88"} verurteilt [...].«
+:::
+
+::: {.fragment .centered}
+**Named Entity Disambiguation**
+:::
+::::
+
+::: {.notes}
+
+:::
+
+
+## {auto-animate=true}
+
+:::: {.columns .fragment fragment-index=2 .semi-fade-out}
+
+::: {.column width="50%"}
+»[...] Die Verurteilung von [Starkoch Alfons Schuhbeck]{.bg style="--col: #EE8866" data-id="wikify-1"} wegen [Steuerhinterziehung]{.bg style="--col: #BBCC33" data-id="wikify-2"} ist nach einem [Urteil]{.bg style="--col: #AAAA00" data-id="wikify-3"} des [Bundesgerichtshofs]{.bg style="--col: #44BB99" data-id="wikify-4"} weitgehend rechtskräftig. Im Oktober 2022 hatte das [Landgericht München I]{.bg style="--col: #77AADD" data-id="wikify-5"} [Schuhbeck]{.bg style="--col: #EE8866" data-id="wikify-6"} zu drei Jahren und zwei Monaten [Gefängnis]{.bg style="--col: #EEDD88" data-id="wikify-7"} verurteilt [...].«
+:::
+
+::: {.column width="50%" .fragment fragment-index=1}
+»[...] Drei Jahre und zwei Monate [Haft]{.bg style="--col: #EEDD88" data-id="wikify-8"} ohne Bewährung wegen [Steuerhinterziehung]{.bg style="--col: #BBCC33" data-id="wikify-9"} - so lautete in der vergangenen Woche das [Urteil]{.bg style="--col: #AAAA00" data-id="wikify-10"} gegen den bekannten [Fernsehkoch Alfons Schuhbeck]{.bg style="--col: #EE8866" data-id="wikify-11"}. [Schubeck]{.bg style="--col: #EE8866" data-id="wikify-12"} will nun [Revision]{.bg style="--col: #FFAABB" data-id="wikify-13"} einlegen [...].«
+:::
+::::
+
+::: {.fragment fragment-index=3 .larger .centered}
+**Entity Linking** [anhand einer Wissensbasis -- hier per *Wikidata* (Wikifizierung).]{.fg style="--col: #7f7f7f"}
+:::
+
+
+::: {.notes}
+
+:::
+
+
+## {auto-animate=true}
+
+:::: {.columns .semi-fade-out}
+
+::: {.column width="50%"}
+»[...] Die Verurteilung von [Q45443]{.bg style="--col: #EE8866" data-id="wikify-1"} wegen [Q17354131]{.bg style="--col: #BBCC33" data-id="wikify-2"} ist nach einem [Q3769186]{.bg style="--col: #AAAA00" data-id="wikify-3"} des [Q687323]{.bg style="--col: #44BB99" data-id="wikify-4"} weitgehend rechtskräftig. Im Oktober 2022 hatte das [Q1802882]{.bg style="--col: #77AADD" data-id="wikify-5"} [Q45443]{.bg style="--col: #EE8866" data-id="wikify-6"} zu drei Jahren und zwei Monaten [Q841236]{.bg style="--col: #EEDD88" data-id="wikify-7"} verurteilt [...].«
+:::
+
+::: {.column width="50%"}
+»[...] Drei Jahre und zwei Monate [Q841236]{.bg style="--col: #EEDD88" data-id="wikify-8"} ohne Bewährung wegen [Q17354131]{.bg style="--col: #BBCC33" data-id="wikify-9"} - so lautete in der vergangenen Woche das [Q3769186]{.bg style="--col: #AAAA00" data-id="wikify-10"} gegen den bekannten [Q45443]{.bg style="--col: #EE8866" data-id="wikify-11"}. [Q45443]{.bg style="--col: #EE8866" data-id="wikify-12"} will nun [Q1523791]{.bg style="--col: #FFAABB" data-id="wikify-13"} einlegen [...].«
+:::
+::::
+
+::: {.larger .centered}
+**Entity Linking** [anhand einer Wissensbasis -- hier per *Wikidata* (Wikifizierung).]{.fg style="--col: #7f7f7f"}
+:::
+
+::: {.notes}
+GND der Deutschen Nationalbibliothek
+:::
+
+## {auto-animate=true}
+
+:::: {.columns .semi-fade-out}
+
+::: {.column width="50%"}
+»[...] Die Verurteilung von [Q45443]{.bg style="--col: #EE8866" data-id="wikify-1"} wegen [Q17354131]{.bg style="--col: #BBCC33" data-id="wikify-2"} ist nach einem [Q3769186]{.bg style="--col: #AAAA00" data-id="wikify-3"} des [Q687323]{.bg style="--col: #44BB99" data-id="wikify-4"} weitgehend rechtskräftig. Im Oktober 2022 hatte das [Q1802882]{.bg style="--col: #77AADD" data-id="wikify-5"} [Q45443]{.bg style="--col: #EE8866" data-id="wikify-6"} zu drei Jahren und zwei Monaten [Q841236]{.bg style="--col: #EEDD88" data-id="wikify-7"} verurteilt [...].«
+:::
+
+::: {.column width="50%"}
+»[...] Drei Jahre und zwei Monate [Q841236]{.bg style="--col: #EEDD88" data-id="wikify-8"} ohne Bewährung wegen [Q17354131]{.bg style="--col: #BBCC33" data-id="wikify-9"} - so lautete in der vergangenen Woche das [Q3769186]{.bg style="--col: #AAAA00" data-id="wikify-10"} gegen den bekannten [Q45443]{.bg style="--col: #EE8866" data-id="wikify-11"}. [Q45443]{.bg style="--col: #EE8866" data-id="wikify-12"} will nun [Q1523791]{.bg style="--col: #FFAABB" data-id="wikify-13"} einlegen [...].«
+:::
+::::
+
+::: {.centered}
+![](assets/entities.svg){width=40%}
+:::
+
+::: {.notes}
+GND der Deutschen Nationalbibliothek
+:::
+
+---------------
+
+www.tagesschau.de
 
 ## Wikifizierung {.smaller}
 
