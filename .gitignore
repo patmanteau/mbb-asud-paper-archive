@@ -1,6 +1,7 @@
 ## Quarto build
 src/mbb-asud-paper_files/
 src/mbb-asud-presentation_files/
+src/pres/mbb-asud-presentation_files/
 
 ## Jupyter
 .ipynb_checkpoints/
