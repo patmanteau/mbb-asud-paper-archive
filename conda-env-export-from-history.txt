@@ -1,0 +1,19 @@
+name: mbb-asud-proto-tagesschau
+channels:
+  - defaults
+dependencies:
+  - python
+  - spacy
+  - cupy
+  - jupyterlab
+  - unidecode
+  - scrapy
+  - pandas
+  - dask
+  - jsonlines
+  - networkx
+  - matplotlib
+  - scipy
+  - polars
+  - fastparquet
+prefix: C:\Users\p\miniconda3\envs\mbb-asud-proto-tagesschau
