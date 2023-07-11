@@ -1,0 +1,86 @@
+[
+  {
+    "objectID": "mbb-asud-presentation.html#section",
+    "href": "mbb-asud-presentation.html#section",
+    "title": "Tagesschau",
+    "section": "",
+    "text": "Welt Netzwerke\nStrukturen, Zusammenhänge, Flüsse\nKaum Visualisierungsproblem herausfordend Graph\nThesis"
+  },
+  {
+    "objectID": "mbb-asud-presentation.html#section-1",
+    "href": "mbb-asud-presentation.html#section-1",
+    "title": "Tagesschau",
+    "section": "",
+    "text": "→ ? →\n\n\n\n\n\n\n\n\nIdee: Netzwerk aus Nachrichtenartikeln bauen\nPersonen, Orte, Organisationen verbinden\ndie gemeinsam in einem Artikel erwähnt werden\nmit den Mitteln der Netzwerkanalyse auswerten (Kennzahlen, Eigenschaften, Communities)"
+  },
+  {
+    "objectID": "mbb-asud-presentation.html#section-2",
+    "href": "mbb-asud-presentation.html#section-2",
+    "title": "Tagesschau",
+    "section": "",
+    "text": "»[…] Die Verurteilung von Starkoch Alfons Schuhbeck wegen Steuerhinterziehung ist nach einem Urteil des Bundesgerichtshofs weitgehend rechtskräftig. Im Oktober 2022 hatte das Landgericht München I Schuhbeck zu drei Jahren und zwei Monaten Gefängnis verurteilt […].«\n\n\nNamed Entity Recognition"
+  },
+  {
+    "objectID": "mbb-asud-presentation.html#section-3",
+    "href": "mbb-asud-presentation.html#section-3",
+    "title": "Tagesschau",
+    "section": "",
+    "text": "»[…] Die Verurteilung von Starkoch Alfons Schuhbeck wegen Steuerhinterziehung ist nach einem Urteil des Bundesgerichtshofs weitgehend rechtskräftig. Im Oktober 2022 hatte das Landgericht München I Schuhbeck zu drei Jahren und zwei Monaten Gefängnis verurteilt […].«\n\n\nNamed Entity Disambiguation"
+  },
+  {
+    "objectID": "mbb-asud-presentation.html#section-4",
+    "href": "mbb-asud-presentation.html#section-4",
+    "title": "Tagesschau",
+    "section": "",
+    "text": "»[…] Die Verurteilung von Starkoch Alfons Schuhbeck wegen Steuerhinterziehung ist nach einem Urteil des Bundesgerichtshofs weitgehend rechtskräftig. Im Oktober 2022 hatte das Landgericht München I Schuhbeck zu drei Jahren und zwei Monaten Gefängnis verurteilt […].«\n\n»[…] Drei Jahre und zwei Monate Haft ohne Bewährung wegen Steuerhinterziehung - so lautete in der vergangenen Woche das Urteil gegen den bekannten Fernsehkoch Alfons Schuhbeck. Schubeck will nun Revision einlegen […].«\n\n\n\nEntity Linking anhand einer Wissensbasis – hier per Wikidata (Wikifizierung)."
+  },
+  {
+    "objectID": "mbb-asud-presentation.html#section-5",
+    "href": "mbb-asud-presentation.html#section-5",
+    "title": "Tagesschau",
+    "section": "",
+    "text": "»[…] Die Verurteilung von Q45443 wegen Q17354131 ist nach einem Q3769186 des Q687323 weitgehend rechtskräftig. Im Oktober 2022 hatte das Q1802882 Q45443 zu drei Jahren und zwei Monaten Q841236 verurteilt […].«\n\n»[…] Drei Jahre und zwei Monate Q841236 ohne Bewährung wegen Q17354131 - so lautete in der vergangenen Woche das Q3769186 gegen den bekannten Q45443. Q45443 will nun Q1523791 einlegen […].«\n\n\n\nEntity Linking anhand einer Wissensbasis – hier per Wikidata (Wikifizierung).\n\n\nGND der Deutschen Nationalbibliothek"
+  },
+  {
+    "objectID": "mbb-asud-presentation.html#section-6",
+    "href": "mbb-asud-presentation.html#section-6",
+    "title": "Tagesschau",
+    "section": "",
+    "text": "»[…] Die Verurteilung von Q45443 wegen Q17354131 ist nach einem Q3769186 des Q687323 weitgehend rechtskräftig. Im Oktober 2022 hatte das Q1802882 Q45443 zu drei Jahren und zwei Monaten Q841236 verurteilt […].«\n\n»[…] Drei Jahre und zwei Monate Q841236 ohne Bewährung wegen Q17354131 - so lautete in der vergangenen Woche das Q3769186 gegen den bekannten Q45443. Q45443 will nun Q1523791 einlegen […].«\n\n\n\n\n\n\nGND der Deutschen Nationalbibliothek"
+  },
+  {
+    "objectID": "mbb-asud-presentation.html#section-7",
+    "href": "mbb-asud-presentation.html#section-7",
+    "title": "Tagesschau",
+    "section": "",
+    "text": "Nicht bzw. niedrig bewertete Entitäten ausfiltern\n\nErsichtlich: EL ist der komplexeste Schritt. Damit möchte ich dann auch gleich in die Herausforderungen starten"
+  },
+  {
+    "objectID": "mbb-asud-presentation.html#entity-linking",
+    "href": "mbb-asud-presentation.html#entity-linking",
+    "title": "Tagesschau",
+    "section": "Entity Linking",
+    "text": "Entity Linking\n\nNamed Entity Recognition\nRückgriff auf eine Wissensbasis\nKandidatenauswahl\nBewertung anhand des lokalen Kontexts\n\n\n\n\n\n\n\nHinweis\n\n\nEntity Linking ist sprachspezifisch\nDeutsche Modelle existieren, aber die aktuelle Forschung konzentriert sich auf das Englische"
+  },
+  {
+    "objectID": "mbb-asud-presentation.html#betrachtete-optionen",
+    "href": "mbb-asud-presentation.html#betrachtete-optionen",
+    "title": "Tagesschau",
+    "section": "Betrachtete Optionen",
+    "text": "Betrachtete Optionen\n\n\n\n\nREL: Radboud Entity Linker\nKein deutsches Modell\nTrainierbar, aber: deutsche Trainings-/Test-/Validierungsdaten erforderlich\nDaher für diese Arbeit verworfen\n\n\n\nentity-fishing\nDeutsches Modell\nMit Standardinstallation niedriger Durchsatz – ca. 40 Artikel/min.\n10 Stunden für 25.000 Artikel"
+  },
+  {
+    "objectID": "mbb-asud-presentation.html#durchsatzoptimierung",
+    "href": "mbb-asud-presentation.html#durchsatzoptimierung",
+    "title": "Tagesschau",
+    "section": "Durchsatzoptimierung",
+    "text": "Durchsatzoptimierung\n\n\n\nLokale Installation des entity-fishing-Webservice\nDeployment als Docker-Container\nWissensbasis + englisches + deutsches Modell = ~60 GiB\n\n\nEntity Linking ist unabhängig von anderen Artikeln\nWissenbasis und Modelle passen vollständig ins RAM der Workstation\nGut parallelisierbares Problem!\n\n\n\n\n33 Minuten für 25.000 Artikel"
+  },
+  {
+    "objectID": "mbb-asud-presentation.html#ausblick",
+    "href": "mbb-asud-presentation.html#ausblick",
+    "title": "Tagesschau",
+    "section": "Ausblick",
+    "text": "Ausblick\n\n\n\n\nNetzwerkanalyse\n- z.b. -\nGradverteilung\nSmall-World – Eigenschaft\nAssortativität\nZentralität\n\n\n\nBesseres Entity Linking\nDeutsches Training/Finetuning anderer EL-Lösungen:\n\nRadboud Entity Linker\nSBB-NED\nREBEL\nGENRE/mGENRE"
+  }
+]
