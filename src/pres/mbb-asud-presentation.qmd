@@ -16,9 +16,6 @@ author:
 
 ## {background-image="assets/typen_von_graphen.png" background-size="100%"}
 
-[Quellen s. letzte Seite]{.small .absolute right=10}
-
-
 ::: {.notes}
 - Welt Netzwerke
 - Strukturen, Zusammenhänge, Flüsse
@@ -48,7 +45,7 @@ author:
 - SoNAR (IDH): Historische Netzwerkanalyse
 :::
 
-# Vom Nachrichtenportal zum Netzwerk
+# Vom Artikel zum Netzwerk
 
 ##
 
@@ -168,97 +165,128 @@ GND der Deutschen Nationalbibliothek
 GND der Deutschen Nationalbibliothek
 :::
 
----------------
+# Daten-Pipeline
 
-www.tagesschau.de
+## {background-image="assets/pipeline.png" background-size="100%"}
 
-## Wikifizierung {.smaller}
+::: {.notes}
+- IV.
+  - Nicht bzw. niedrig bewertete Entitäten ausfiltern
+- Ersichtlich: EL ist der komplexeste Schritt. Damit möchte ich dann auch gleich in
+  die Herausforderungen starten
+:::
 
-```{python}
-import pandas as pd
-from pathlib import Path
+# Herausforderungen
 
-# Path to the root of the project
-_bd = (Path(".") / "..").resolve()
+## Entity Linking
 
-# Data directory
-_dd = _bd / "data"
-# df_catalog = pd.read_json(
-#     open(f"{_dd}/3_catalog.jsonl", "r", encoding="utf8"), lines=True
-# )
-# df_wd_catalog = pd.read_json(
-#     open(f"{_dd}/4_wd-catalog.jsonl", "r", encoding="utf8"), lines=True
-# )
-# df_all = pd.merge(df_catalog, df_wd_catalog, on="id")
-# df_all[["id", "label", "description"]].sample(4).style.hide()
-```
+1. Named Entity Recognition
+2. Rückgriff auf eine Wissensbasis
+3. Kandidatenauswahl
+4. Bewertung anhand des lokalen Kontexts
 
-## Example slide
+::: {.callout-note}
 
-### This is a subtitle
+Entity Linking ist sprachspezifisch
 
-Here we have some text that may run over several lines of the slide frame,
-depending on how long it is.
+Deutsche Modelle existieren, aber die aktuelle Forschung konzentriert sich auf das Englische
 
-- first item 
-    - A sub item
+:::
 
-Next, we'll brief review some theme-specific components.
 
-- Note that _all_ of the standard Reveal.js
-[features](https://quarto.org/docs/presentations/revealjs/)
-can be used with this theme, even if we don't highlight them here.
+## Betrachtete Optionen
 
-## Additional theme classes
+:::: {layout-ncol=2}
 
-### Some extra things you can do with the clean theme
+::: {.column width="50%" .fragment}
+### REL: Radboud Entity Linker
 
-Special classes for emphasis
+Kein deutsches Modell
 
-- `.alert` class for default emphasis, e.g. [important note]{.alert}.
-- `.fg` class for custom colour, e.g. [important note]{.fg style="--col: #e64173"}.
-- `.bg` class for custom background, e.g. [important note]{.bg style="--col: #e64173"}.
+Trainierbar, aber: deutsche Trainings-/Test-/Validierungsdaten erforderlich
 
-Cross-references
+Daher für diese Arbeit [verworfen]{.alert}
+:::
 
-- `.button` class provides a Beamer-like button, e.g.
-[[Summary]{.button}](#sec-summary)
+::: {.column width="50%" .fragment}
+### *entity-fishing*
+Deutsches Modell
 
-## Want more?
+Mit Standardinstallation niedriger Durchsatz -- ca. 40 Artikel/min.
 
-### See our longer demo slides
+**10 Stunden** für 25.000 Artikel
+:::
 
-We've deliberarely kept this template lean, to get you up and running as fast as
-possible.
+::::
 
-We provide a separate
-[demo template](https://github.com/grantmcdermott/quarto-revealjs-clean-demo),
-with more examples for integrating code, tables, figures, etc.
+::: {.notes}
 
-  - See the live demo slides
-  [here](https://grantmcdermott.com/quarto-revealjs-clean-demo/template.html).
+:::
 
-## Summary {#sec-summary}
+## Durchsatzoptimierung
 
-### A minimal and elegant presentation theme
+:::: {layout-ncol=2}
 
-The Quarto reveal.js clean theme aims to be a minimal and elegant presention
-theme.
+::: {.column width="50%" .fragment}
+Lokale Installation des *entity-fishing*-Webservice
 
-Install the theme.
+Deployment als Docker-Container
 
-```{.bash}
-quarto install extension grantmcdermott/quarto-revealjs-clean
-```
+Wissensbasis + englisches + deutsches Modell = ~60 GiB
+:::
 
-Use this lean template.
+::: {.column width="50%" .fragment}
+Entity Linking ist unabhängig von anderen Artikeln
 
-```{.bash}
-quarto use template grantmcdermott/quarto-revealjs-clean
-```
+Wissenbasis und Modelle passen vollständig ins RAM der Workstation
 
-Use the longer demo template.
+Gut parallelisierbares Problem!
+:::
 
-```{.bash}
-quarto use template grantmcdermott/quarto-revealjs-clean-demo
-```
+::::
+
+:::: {.fragment .centered}
+**33 Minuten** für 25.000 Artikel
+::::
+
+::: {.notes}
+
+:::
+
+
+## Ausblick
+
+:::: {layout-ncol=2}
+
+::: {.column width="50%" .fragment}
+### Netzwerkanalyse
+
+\- z.b. -
+
+Gradverteilung
+
+Small-World -- Eigenschaft
+
+Assortativität
+
+Zentralität
+:::
+
+::: {.column width="50%" .fragment}
+### Besseres Entity Linking
+
+Deutsches Training/Finetuning anderer EL-Lösungen:
+
+- [Radboud Entity Linker](https://github.com/informagi/REL)
+- [SBB-NED](https://github.com/qurator-spk/sbb_ned)
+- [REBEL](https://github.com/Babelscape/rebel)
+- [GENRE/mGENRE](https://github.com/facebookresearch/GENRE)
+:::
+
+::::
+
+::: {.notes}
+
+:::
+
+# Vielen Dank und gute Nacht
