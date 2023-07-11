@@ -10,9 +10,10 @@ format:
 author:
   - name: Patrick Haas
     email: p@trickhaas.de
+revealjs-plugins:
+  - pointer
+  - attribution
 ---
-
-
 
 ## {background-image="assets/typen_von_graphen.png" background-size="100%"}
 
