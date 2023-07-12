@@ -1,5 +1,5 @@
 ---
-title: "Tagesschau"
+title: "Erschließung eines Netzwerks von Personen, Ereignissen, Organisationen und Orten aus Tagesschau-Artikeln"
 subtitle: "Analyse semi- und unstrukturierter Daten - FOM - SoSe 2023"
 lang: de-DE
 date: 2023-07-12
@@ -80,7 +80,7 @@ revealjs-plugins:
 ::::
 
 ::: {.notes}
-
+- Problem: "Starkoch Alfons Schuhbeck" und "Schuhbeck" -- separate Entitäten, aber die gleiche Person ist gemeint
 :::
 
 ## {auto-animate="true"}
@@ -254,29 +254,20 @@ Gut parallelisierbares Problem!
 
 :::
 
-
 ## Ausblick
 
 :::: {layout-ncol=2}
 
 ::: {.column width="50%" .fragment}
-### Netzwerkanalyse
+**Netzwerkanalyse**: Gradverteilung -- Assortativität -- Zentralität -- usf.
 
-\- z.b. -
+**Mehrere Netzwerke**: Weitere Nachrichtenportale -- deutsch, englisch, französisch, ...
 
-Gradverteilung
-
-Small-World -- Eigenschaft
-
-Assortativität
-
-Zentralität
+**Quantifizierung der EL-Fehlerquote**: Auf dem Realdatensatz schwer bewertbar -- ggfs. durch Vergleich mehrerer EL-Modelle
 :::
 
 ::: {.column width="50%" .fragment}
-### Besseres Entity Linking
-
-Deutsches Training/Finetuning anderer EL-Lösungen:
+**Besseres Entity Linking** -- deutsches Training/Finetuning anderer EL-Lösungen:
 
 - [Radboud Entity Linker](https://github.com/informagi/REL)
 - [SBB-NED](https://github.com/qurator-spk/sbb_ned)
