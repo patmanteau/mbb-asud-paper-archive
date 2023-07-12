@@ -17,13 +17,18 @@ revealjs-plugins:
   - attribution
 ---
 
+# Motivation und Inspiration
+
 ## {background-image="assets/typen_von_graphen.png" background-size="100%"}
 
 ::: {.notes}
-- Welt Netzwerke
+- möchte was über Graphen erzählen, meine heute aber leider nicht flauschige Blutsauger
+- stark vernetzte Welt
+- Netzwerkdarstellung bietet Perspektive, die von großem Wert für das Verständnis
 - Strukturen, Zusammenhänge, Flüsse
-- Kaum Visualisierungsproblem herausfordend Graph
-- Thesis
+- Gute Visualisierung eines Graphen ist sehr herausfordernd
+- und da brenne ich ja für
+- *weiter*
 :::
 
 ---------------
@@ -43,30 +48,38 @@ revealjs-plugins:
 ::::
 
 ::: {.notes}
-- Gespräch Vorlesung
+- gewisse Faszination meinerseits
+- Gespräch über Graph in Vorlesung
 - Ich: warum kein Graph?
 - SoNAR (IDH): Historische Netzwerkanalyse
+  - Scans historischer Dokumente, OCR
+  - Visualisierung
+  - sehr sehr faszinierend
+- Ok, mach ich auch - aber mit Nachrichten
 :::
-
-# Vom Artikel zum Netzwerk
 
 ##
 
 ::: {layout-ncol=3 layout-valign="center" .centered}
 ![](assets/tagesschau.de-archiv.png)
 
-[→ ? →]{.fragment .r-fit-text fragment-index=2}
+[{{< bi patch-question >}}]{.fragment .xlarger fragment-index=2}
 
 ![](assets/newsgraph.svg){.fragment fragment-index=1}
 :::
 
 ::: {.notes}
 - Idee: Netzwerk aus Nachrichtenartikeln bauen
+- **klick**
 - Personen, Orte, Organisationen verbinden
 - die gemeinsam in einem Artikel erwähnt werden
-- mit den Mitteln der Netzwerkanalyse auswerten (Kennzahlen, Eigenschaften, Communities)
+- um sie mit den Mitteln der Netzwerkanalyse auswerten (Kennzahlen, Eigenschaften, Communities)
+- **klick**
+
+Frage: wie kommt man von A nach B?
 :::
 
+# Konzept
 
 ## {auto-animate="true"}
 
@@ -82,7 +95,11 @@ revealjs-plugins:
 ::::
 
 ::: {.notes}
-- Problem: "Starkoch Alfons Schuhbeck" und "Schuhbeck" -- separate Entitäten, aber die gleiche Person ist gemeint
+- Ausgangspunkt: ein Artikel
+- **klick**
+- Named Entity Recognition durchgeführt habe
+- *zeigen* Problem: "Starkoch Alfons Schuhbeck", "Schuhbeck" -- separate Entitäten, aber die gleiche Person ist gemeint
+- Nicht gut - ich will konkrete Personen...
 :::
 
 ## {auto-animate="true"}
@@ -99,7 +116,11 @@ revealjs-plugins:
 ::::
 
 ::: {.notes}
-
+- muss also nächsten Schritt Entitäten eindeutig machen
+- **klick**
+- Named Entity Disambiguation
+- *zeigen*: Schuhbeck Schuhbeck
+- Aber es geht um mehr als einzelnen Artikel...
 :::
 
 
@@ -116,13 +137,20 @@ revealjs-plugins:
 :::
 ::::
 
-::: {.fragment fragment-index=3 .larger .centered}
+::: {.fragment fragment-index=3 .centered}
 **Entity Linking** [anhand einer Wissensbasis -- hier per *Wikidata* (Wikifizierung).]{.fg style="--col: #7f7f7f"}
 :::
 
 
 ::: {.notes}
-
+- **klick**
+- ...ich habe jede Menge!
+- Eindeutig machen auch zwischen den Artikeln
+- Schwierig! *zeigen*: Schuhbeck (Typo) & Haft/Gefängnis
+- Die gemeinte Entität hängt vom Kontext ab
+- **klick** **klick**
+- Das Verfahren, das ich brauche: Entity Linking - Referenzieren in eine Wissensbasis, gerne Wikidata
+- **klick**
 :::
 
 
@@ -139,12 +167,16 @@ revealjs-plugins:
 :::
 ::::
 
-::: {.larger .centered}
-**Entity Linking** [anhand einer Wissensbasis -- hier per *Wikidata* (Wikifizierung).]{.fg style="--col: #7f7f7f"}
+::: {.centered}
+Entity **Recognition** + Entity **Disambiguation** + **Referenzierung** in eine Wissensbasis = End-to-end Entity Linking
 :::
 
 ::: {.notes}
-GND der Deutschen Nationalbibliothek
+- Habe konzeptionell damit alles, was ich brauche
+- *Gleichung wiedergeben*
+- Knoten
+- Kanten
+- **klick**
 :::
 
 ## {auto-animate=true}
@@ -165,19 +197,53 @@ GND der Deutschen Nationalbibliothek
 :::
 
 ::: {.notes}
-GND der Deutschen Nationalbibliothek
+- Graph für diese beiden Artikel
 :::
 
 # Daten-Pipeline
 
+::: {.notes}
+- Wir wollen mehr als zwei Artikel
+- Wir brauchen eine Architektur für viele Artikel
+- Wie kann das aussehen?...
+:::
+
+
 ## {background-image="assets/pipeline.png" background-size="100%"}
 
 ::: {.notes}
-- IV.
+- Am Anfang Dok-korpus -- Tagesschau und Wikidata
+- Am Ende Datenkorpus -- Ausgangspunkt für weitere Analyse
+- Dazwischen eine vierstufige Pipeline
+- (weitgehend) modular
+- jede Stufe Zwischenergebnis, wiederaufsetzbar
+II.
+  - *entity-fishing* -- E2E EL Lösung, Webservice, per Plugin in spaCy integriert
+IV.
   - Nicht bzw. niedrig bewertete Entitäten ausfiltern
-- Ersichtlich: EL ist der komplexeste Schritt. Damit möchte ich dann auch gleich in
-  die Herausforderungen starten
 :::
+
+## Technischer Durchstich
+
+:::: {layout-ncol=2 layout-valign="center"}
+
+::: {.column width="50%"}
+![](assets/neo4j.png)
+![](assets/degree_distribution.png)
+:::
+
+::: {.column width="50%"}
+![](assets/cosmograph_example.png)
+:::
+
+::::
+
+::: {.notes}
+- die Pipeline funktioniert
+- die Ergebnisse sehen plausibel aus
+- die Analyse kann kommen
+:::
+
 
 # Herausforderungen
 
@@ -189,11 +255,15 @@ GND der Deutschen Nationalbibliothek
 4. Bewertung anhand des lokalen Kontexts
 
 ::: {.callout-note}
-
-Entity Linking ist sprachspezifisch
+## Starker Bezug zur gesprochenen Sprache
 
 Deutsche Modelle existieren, aber die aktuelle Forschung konzentriert sich auf das Englische
+:::
 
+::: {.notes}
+- Recap 4 Punkte
+- sprachspezifisch
+- **Herausforderung**: gutes deutsches Modell finden
 :::
 
 
@@ -217,13 +287,19 @@ Deutsches Modell
 
 Mit Standardinstallation niedriger Durchsatz -- ca. 40 Artikel/min.
 
-**10 Stunden** für 25.000 Artikel
+{{< bi hourglass-bottom >}} **10 Stunden** für 25.000 Artikel
 :::
 
 ::::
 
 ::: {.notes}
-
+- **klick**
+- REL hätte ich sehr gerne genommen
+- verwerfen war schade -- sehr interessantes, gut dokumentiertes Modell
+- **klick**
+- Kann Deutsch
+- Laufzeit war Herausforderung...
+- *weiter*
 :::
 
 ## Durchsatzoptimierung
@@ -249,27 +325,29 @@ Gut parallelisierbares Problem!
 ::::
 
 :::: {.fragment .centered}
-**33 Minuten** für 25.000 Artikel
+{{< bi hourglass-split >}} **33 Minuten** für 25.000 Artikel
 ::::
 
 ::: {.notes}
-
+- **klick**
 :::
 
-## Ausblick
+# Ausblick
+
+##
 
 :::: {layout-ncol=2}
 
-::: {.column width="50%" .fragment}
+::: {.column width="50%"}
 **Netzwerkanalyse**: Gradverteilung -- Assortativität -- Zentralität -- usf.
 
-**Mehrere Netzwerke**: Weitere Nachrichtenportale -- deutsch, englisch, französisch, ...
+**Vergleich von Netzwerken**: Weitere Nachrichtenportale -- deutsch, englisch, französisch, ...
 
 **Quantifizierung der EL-Fehlerquote**: Auf dem Realdatensatz schwer bewertbar -- ggfs. durch Vergleich mehrerer EL-Modelle
 :::
 
 ::: {.column width="50%" .fragment}
-**Besseres Entity Linking** -- deutsches Training/Finetuning anderer EL-Lösungen:
+**Besseres Entity Linking** -- deutsches Training/Finetuning anderer EL-Systeme:
 
 - [Radboud Entity Linker](https://github.com/informagi/REL)
 - [SBB-NED](https://github.com/qurator-spk/sbb_ned)
@@ -280,7 +358,10 @@ Gut parallelisierbares Problem!
 ::::
 
 ::: {.notes}
-
+- Netzwerkanalyse: Struktur, Zentralität, Communities
+- Vergleich mehrerer Netzwerke
+- EL ist fehleranfällig - ein qualifizierter Vergleich ohne Label wäre interessant
+- Entsprechend weitere EL-Systeme
 :::
 
-# Vielen Dank und gute Nacht
+# Vielen Dank! {{< bi moon-stars-fill color=#FEC44F >}}

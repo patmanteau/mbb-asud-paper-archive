@@ -1,0 +1,11 @@
+Old versions still available through context menu.
+
+28/4/2022
+	Fixed encoding errors:
+	\u0096 ->  – (en dash)
+	\u0080 ->  € (Euro sign)
+	\u0092 ->  ' (apostrophe)
+	\u00AD -> <deleted> (hyphen at line break) where only indicating a line break
+	\u00AD -> - (hyphen at line break) where indicating a hyphen proper
+	Thanks for the heads-up to John Bauer & Chris Manning.
+	[sp]

@@ -39,6 +39,15 @@ $selection-bg: #26351c !default;
     font-size: 0.7em;
 }
 
+.larger {
+    font-size: 1.5em;
+}
+
+.xlarger {
+    font-size: 3em;
+}
+
+
 .centered {
     text-align: center;
 }
@@ -60,7 +69,7 @@ $selection-bg: #26351c !default;
 
     .title {
         color: $body-color;
-        font-size: 1.4em;
+        font-size: 1.2em;
         // font-weight: 350;
         font-weight: 600;
         // line-height: 0;
