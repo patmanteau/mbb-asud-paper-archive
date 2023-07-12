@@ -1,14 +1,16 @@
 ---
-title: "Erschließung eines Netzwerks von Personen, Ereignissen, Organisationen und Orten aus Tagesschau-Artikeln"
-subtitle: "Analyse semi- und unstrukturierter Daten - FOM - SoSe 2023"
+title: "Erschließung eines Netzwerks von Named Entities aus Nachrichtenartikeln am Beispiel von www.tagesschau.de"
+subtitle: "Analyse semi- und unstrukturierter Daten -- MBB WS22 (K)"
 lang: de-DE
 date: 2023-07-12
 date-format: full
 format:
   revealjs: 
     theme: clean-archivo-narrow.scss
+    pointer:
+      pointerSize: 24
 author:
-  - name: Patrick Haas
+  - name: Patrick Haas -- 311431
     email: p@trickhaas.de
 revealjs-plugins:
   - pointer
